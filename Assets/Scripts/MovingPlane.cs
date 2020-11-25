@@ -4,56 +4,38 @@ using UnityEngine;
 
 public class MovingPlane : MonoBehaviour
 {
-    float speedPlat = 10f;
-    float zlimit = 28.4f;
-    bool hitwall = false;
-    bool hitplayer = false;
-    bool moveback = false;
-    
+    float speedPlat = 1f;
+    int boxcount = 1;
+
+    public GameObject movingplane; 
+
+    Vector3 pointa = new Vector3(1f, 1f, 41.2f);
+    Vector3 pointb = new Vector3(1f, 1f, 28.14f);
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hitplayer == true)
+       if(boxcount <= 0)
         {
-            transform.Translate(Vector3.back * Time.deltaTime * speedPlat);
-            moveback = true;
-            
-        }
-
-        if(transform.position.z <= zlimit && hitplayer == true)
-        {
-            moveback = false;
-            
-        }
-        if(moveback == false)
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime * speedPlat);
+            movingplane.transform.position = Vector3.Lerp(pointa, pointb, Mathf.PingPong(Time.time, 1) * speedPlat);
         }
         
-       
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-
-            hitplayer = true;
-        }
-
-  
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag( "PlaneB" ))
-        {
-            
-        }
+        boxcount--;
     }
 }
+
+
+
+    
+    
+
 

@@ -8,6 +8,9 @@ TagManager:
   - Platform
   - PlaneB
   - PlaneC
+  - EndFlag
+  - Coin
+  - Barrier
   layers:
   - Default
   - TransparentFX
