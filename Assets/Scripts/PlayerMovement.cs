@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(0,90, 0);
+            transform.rotation = Quaternion.Euler(0 ,90, 0);
             playerAnim.SetBool("isRun", true);
         }
 
